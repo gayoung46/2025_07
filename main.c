@@ -1,17 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main(int argc, char *argv[])
+int inc(int counter);
+
+int main(void)
 {
-    int i ;
+    int i = 10;
     
-    for(i=0;i<5;i++)
-    {
-                    static int temp = 1;//static int하면 소멸되지 않고 생존기간이 계속됨 
-                    printf("temp = %d\n",temp);
-                    temp++;
-    }
+    printf("함수 호출전 i=%d\n", i);
+    i = inc(i);//함수의 반환값을 사용, 반환되는 값을 왼쪽에서 받아줌 
+    //inc(i);를 하면 반환값을 버리는 것  
+    printf("함수 호출후 i=%d\n", i); 
     
   system("PAUSE");	
   return 0;
 }
+
+int inc(int counter)//매개변수는 함수가 없어지면 값이 끝남  
+{
+    counter++;
+    return counter;
+}
+
+//int main(int argc, char *argv[])
